@@ -22,7 +22,7 @@ end
 Vagrant.configure("2") do |config|
   # check/output version of vbox guest extensions on VM
   config.vbguest.no_install = true
-  config.vm.synced_folder ".", "#{$VARS[:VHOME]}/workspace", disabled: false
+  config.vm.synced_folder ".", "#{$VARS[:VHOME]}/workspace/#{$VARS[:PROJECT_DIRECTORY]}", disabled: false
 
   config.vm.define "dev", primary: true do |dev|
     dev.vm.box = "ubuntu/bionic64"
