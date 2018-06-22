@@ -27,7 +27,7 @@ apt-get upgrade
 apt-get dist-upgrade
 
 # install essentials
-apt-get install -y vim curl build-essential gnome-terminal guake gnome-tweak-tool
+apt-get install -y vim curl build-essential gnome-terminal gnome-tweak-tool
 apt-get remove -y --auto-remove byobu
 
 # install chromium
@@ -49,6 +49,8 @@ apt-get install -y yarn
 # install vscode
 curl -o code.deb -L http://go.microsoft.com/fwlink/?LinkID=760868
 dpkg -i code.deb
+apt-get -f install -y
+apt-get install libgtk2.0-0
 VSC_EXT_DIR=~/.vscode/extensions
 mkdir -p $VSC_EXT_DIR
 code --user-data-dir=$VSC_CONF_DIR \
