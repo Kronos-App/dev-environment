@@ -30,6 +30,21 @@ apt-get dist-upgrade
 apt-get install -y vim curl build-essential gnome-terminal gnome-tweak-tool
 apt-get remove -y --auto-remove byobu
 
+# install nautilus
+apt-get install -y python3 pythyon3-pip ninja-build
+pip3 install --user meson
+cd $VHOME
+echo PATH=$HOME/.local/bin:$PATH >> .bashrc
+source .bashrc
+apt-get install -y libgtk-3-dev libgail-3-dev libgexiv2-dev libgnome-autoar-0-dev libgnome-desktop-3-dev libtracker-sparql-2.0-dev libxml++2.6-dev libgirepository1.0-dev
+cd ~/Downloads
+git clone https://gitlab.gnome.org/GNOME/nautilus.git
+cd nautilus/
+meson build
+cd build
+ninja
+ninja install
+
 # install chromium
 apt-get install -y chromium-browser
 
@@ -47,10 +62,10 @@ apt-get update
 apt-get install -y yarn
 
 # install vscode
+apt-get install -y libgtk2.0-0
 curl -o code.deb -L http://go.microsoft.com/fwlink/?LinkID=760868
 dpkg -i code.deb
 apt-get -f install -y
-apt-get install libgtk2.0-0
 VSC_EXT_DIR=~/.vscode/extensions
 mkdir -p $VSC_EXT_DIR
 code --user-data-dir=$VSC_CONF_DIR \
