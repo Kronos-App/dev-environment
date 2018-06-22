@@ -9,6 +9,18 @@ echo "yes" > $VCONF/gnome-initial-setup-done
 localectl set-locale LANG=en_US.UTF-8
 localectl set-keymap us
 
+# configure project ssh key
+PRIVKEY=$VHOME/.ssh/id_rsa
+chmod 600 $PRIVKEY
+chown vagrant:vagrant $PRIVKEY
+
+# configure git
+cat << EOM > $VHOME/.gitconfig
+[user]
+name = "$GIT_NAME"
+email = "$GIT_EMAIL"
+EOM
+
 # ensure installation is up to date
 apt-get update
 apt-get upgrade
