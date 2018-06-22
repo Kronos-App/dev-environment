@@ -31,16 +31,16 @@ apt-get install -y vim curl build-essential gnome-terminal gnome-tweak-tool
 apt-get remove -y --auto-remove byobu
 
 # install nautilus
-apt-get install -y python3 pythyon3-pip ninja-build
+apt-get install -y python3 python3-pip ninja-build
 pip3 install --user meson
 cd $VHOME
-echo PATH=$HOME/.local/bin:$PATH >> .bashrc
+echo PATH=$VHOME/.local/bin:$PATH >> .bashrc
 source .bashrc
-apt-get install -y libgtk-3-dev libgail-3-dev libgexiv2-dev libgnome-autoar-0-dev libgnome-desktop-3-dev libtracker-sparql-2.0-dev libxml++2.6-dev libgirepository1.0-dev
-cd ~/Downloads
+apt-get install -y libgtk-3-dev libgail-3-dev libgexiv2-dev libgnome-autoar-0-dev libgnome-desktop-3-dev libtracker-sparql-2.0-dev libxml++2.6-dev libgirepository1.0-dev libseccomp-dev appstream-util
+cd $VHOME/Downloads
 git clone https://gitlab.gnome.org/GNOME/nautilus.git
 cd nautilus/
-meson build
+$VHOME/.local/bin/meson build
 cd build
 ninja
 ninja install
