@@ -75,7 +75,8 @@ code --user-data-dir=$VSC_CONF_DIR \
     --extensions-dir=$VSC_EXT_DIR \
     --install-extension=dbaeumer.vscode-eslint \
     --install-extension=esbenp.prettier-vscode \
-    --install-extension=jakob101.relativepath
+    --install-extension=jakob101.relativepath \
+    --install-extension=ms-vscode.csharp
 rm code.deb
 
 # cleanup
