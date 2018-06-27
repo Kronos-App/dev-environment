@@ -64,6 +64,18 @@ echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.lis
 apt-get update
 apt-get install -y yarn
 
+# install .NET Core SDK
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.asc.gpg
+mv microsoft.asc.gpg /etc/apt/trusted.gpg.d/
+wget -q https://packages.microsoft.com/config/ubuntu/18.04/prod.list 
+mv prod.list /etc/apt/sources.list.d/microsoft-prod.list
+chown root:root /etc/apt/trusted.gpg.d/microsoft.asc.gpg
+chown root:root /etc/apt/sources.list.d/microsoft-prod.list
+
+apt-get install apt-transport-https
+apt-get update
+apt-get install dotnet-sdk-2.1
+
 # install vscode
 apt-get install -y libgtk2.0-0
 curl -o code.deb -L http://go.microsoft.com/fwlink/?LinkID=760868
